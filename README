@@ -1,0 +1,7 @@
+
+python -m venv myenv
+source myenv/bin/activate  # for Linux/Mac
+myenv\Scripts\activate.bat  # for Windows
+pip install python-dotenv flask pymongo
+
+python app_mongo_db.py

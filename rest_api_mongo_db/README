@@ -1,0 +1,31 @@
+python -m venv myenv
+source myenv/bin/activate  # for Linux/Mac
+myenv\Scripts\activate.bat  # for Windows
+pip install python-dotenv flask pymongo
+python app_mongo_db.py
+
+[Calling REEST endpoints]
+In the following commands, default port of 5000i for flask app is used.
+
+For `user_collection`, there should be a unique index `first_name_1_last_name_1`.
+
+curl --location --request POST 'http://127.0.0.1:5000/user/submit' -d 'first_name=Ted&last_name=Yu'
+
+The above inserts record into `user_collection`.
+
+curl --location --request PUT 'http://127.0.0.1:5000/user/update' -d 'first_name=Ted&last_name=Yu&planid=1'
+
+The above updates the record with `planid` of 1.
+
+curl --location --request DELETE 'http://127.0.0.1:5000/pricing_plan/remove' -d 'id=2'
+
+The above deletes pricing plan with `id` of 2.
+
+[Environment variables]
+The flask application retrieves the following environment variables:
+
+export MONGO_USER=root
+export MONGO_PWD=
+export MONGO_HOST=localhost
+
+where `MONGO_USER` is the root user for the mongodb instance.

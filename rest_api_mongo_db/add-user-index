@@ -1,0 +1,2 @@
+use user_database
+db.user_collection.createIndex({first_name: 1, last_name:1}, {unique:true})
